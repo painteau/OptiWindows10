@@ -1,0 +1,270 @@
+##########
+# Win 10 / Server 2016 / Server 2019 Initial Setup Script
+# Author: Disassembler <disassembler@dasm.cz>
+# Version: v3.10, 2020-07-15
+# Source: https://github.com/Disassembler0/Win10-Initial-Setup-Script
+# Help : https://checkthebenchmarks.com/2019/09/11/win10-initial-setup-script/ (EN) https://www.pcsoleil.fr/optimisation-de-windows-10-grace-a-win10-initial-setup-script/ [#]FR)
+##########
+
+
+
+
+### Require administrator privileges ###
+RequireAdmin
+
+
+### Custom Tweaks ###
+DisableActiveProbing			# EnableActiveProbing							# Désactive le check de connexion internet 
+SetRegisteredOwner
+SetRegisteredOrganization
+
+### Privacy Tweaks ###
+DisableTelemetry                # EnableTelemetry 								# Désactive la Télémétrie Windows (Doit être activé pour les Mises à jour Windows) 
+DisableCortana                  # EnableCortana									# FuckCortana
+DisableWiFiSense                # EnableWiFiSense								# Permet à Windows de partager vos accès Wifi
+DisableSmartScreen           	# EnableSmartScreen								# SmartScreen informe Microsoft de tous les dll et install de logiciels effectués depuis Windows
+DisableWebSearch             	# EnableWebSearch								# Supprime les recherches Bing/Cortana du ménu démarrer
+DisableAppSuggestions           # EnableAppSuggestions							# Mouchard Microsoft pour afficher des pubs ofc
+DisableActivityHistory          # EnableActivityHistory							# Désactive l'historique de vos récentes activités 
+DisableSensors                	# EnableSensors									# Désactive différents capteurs comme l’auto-rotation, l’accélération, le capteur d’altitude
+DisableLocation                 # EnableLocation								# Supprime la localisation du PC pour enlever les pubs ciblées	
+DisableMapUpdates               # EnableMapUpdates								# Ne pas mettre à jour les Maps préintégrées à Windows
+DisableFeedback                 # EnableFeedback								# Désactive les rapports d'erreurs inutiles sur Windows
+DisableTailoredExperiences      # EnableTailoredExperiences						# Désactive les recommandations Windows
+DisableAdvertisingID            # EnableAdvertisingID							# Désactive les Pubs Microsoft ciblées
+DisableWebLangList              # EnableWebLangList								# Désactive la redirection automatique d'un site Web vers la langue du Pc
+# DisableBiometrics             # EnableBiometrics								# Si désactivé impossible de se connecter via Emprunte/Reco Faciale ou tout autre méthode
+# DisableCamera                 # EnableCamera									# Désactive la caméra
+# DisableMicrophone             # EnableMicrophone								# Désactive le micro
+DisableErrorReporting           # EnableErrorReporting							# Désactive les rapports d'erreurs W10
+SetP2PUpdateDisable             # SetP2PUpdateInternet | SetP2PUpdateLocal 		# Désactive les MAJ par Internet ou P2P local
+DisableDiagTrack                # EnableDiagTrack								# Désactive encore de la collecte de données 
+DisableWAPPush                  # EnableWAPPush									# Désactive les Pushs Web ou de l'app : Mon téléphone
+EnableClearRecentFiles    	    # DisableClearRecentFiles						# Sur enable, l'historique du PC sera enregistrée pour cette session et DEL à la fin
+DisableRecentFiles        	    # EnableRecentFiles 							# Désactive les fichiers récents
+
+### UWP Privacy Tweaks ###
+# DisableUWPBackgroundApps        # EnableUWPBackgroundApps
+# DisableUWPVoiceActivation     # EnableUWPVoiceActivation
+# DisableUWPNotifications       # EnableUWPNotifications
+# DisableUWPAccountInfo         # EnableUWPAccountInfo
+# DisableUWPContacts            # EnableUWPContacts
+# DisableUWPCalendar            # EnableUWPCalendar
+# DisableUWPPhoneCalls          # EnableUWPPhoneCalls
+# DisableUWPCallHistory         # EnableUWPCallHistory
+# DisableUWPEmail               # EnableUWPEmail
+# DisableUWPTasks               # EnableUWPTasks
+# DisableUWPMessaging           # EnableUWPMessaging
+# DisableUWPRadios              # EnableUWPRadios
+# DisableUWPOtherDevices        # EnableUWPOtherDevices
+# DisableUWPDiagInfo            # EnableUWPDiagInfo
+# DisableUWPFileSystem          # EnableUWPFileSystem
+# DisableUWPSwapFile            # EnableUWPSwapFile
+
+### Security Tweaks ###
+SetUACLow                  		# SetUACHigh									# Désactive la fenêtre d'autorisation avant le lancement d'un .exe
+EnableSharingMappedDrives     	# DisableSharingMappedDrives					# Active le partage des disques sur le réseau
+EnableAdminShares 				# DisableAdminShares 							# Désactive le partage de certains dossiers du Pc sur le réseau
+DisableFirewall               	# EnableFirewall								# Pour réduire les latences, à désactiver
+HideDefenderTrayIcon         	# ShowDefenderTrayIcon							# Supprime l'affiche de Defender dans la barre de tâche
+DisableDefender           	    # EnableDefender 								# Désactive Defender, gros gains de perfs/latences/conso
+DisableDefenderCloud            # EnableDefenderCloud 							# Désactive l'actualisation de la BDD de Defender
+DisableCtrldFolderAccess		# EnableCtrldFolderAccess       				# Desactiver le controle d'acces aux dossiers Documents/Images/Vidéos etc
+DisableCIMemoryIntegrity 		# EnableCIMemoryIntegrity        				# Contrôle virtuel de sécurité de l’intégrité de la mémoire
+DisableDefenderAppGuard			# EnableDefenderAppGuard        				# Deactive Appguard pour les navigateurs 
+HideAccountProtectionWarn       # ShowAccountProtectionWarn						# Désactive l'alerte qui veut vous faire vous connecter à votre compte Microsoft
+EnableDownloadBlocking			# DisableDownloadBlocking       				# Active le blocage provisoire des applications et fichiers dangereux DL depuis internet
+EnableScriptHost				# DisableScriptHost               				# Active les lancements de VBS, BAT en arriere plan
+EnableDotNetStrongCrypto        # DisableDotNetStrongCrypto						# Activer force les apps .NET à utiliser un flux plus sécurisé pour les échanges
+DisableMeltdownCompatFlag		# EnableMeltdownCompatFlag      				# A activer pour se proteger de Meltdown (mais impacte les perfs des processeurs AMD et Intel)
+EnableF8BootMenu                # DisableF8BootMenu								# Permet d'accéder au Boot menu via F8 au StartUp
+# DisableBootRecovery           # EnableBootRecovery							# Laisse activé le recovery mode. Laisse aussi l'option Réinitialiser ce PC malheuresement mais bon...
+EnableRecoveryAndReset			# DisableRecoveryAndReset   				    # Active l'option Recupération dans le menu de boot windows
+SetDEPOptOut                    # SetDEPOptIn 									# Désactive une ancienne sécurité Windows XP (Data Exécution Prevention) obsolète
+
+### Network Tweaks ###
+SetCurrentNetworkPrivate        # SetCurrentNetworkPublic						# Passe le réseau actuel en mode privé
+SetUnknownNetworksPrivate     	# SetUnknownNetworksPublic						# Passe les réseaux inconnus en mode privé
+EnableNetDevicesAutoInst		# DisableNetDevicesAutoInst     				# Active l'auto install des périphérques réseaux
+DisableHomeGroups             	# EnableHomeGroups								# Désactivé de base sur W10 , on s'en assure juste
+EnableSMB1						# DisableSMB1                   				# Active le SMB 1.0
+EnableSMBServer					# DisableSMBServer             					# Active les partages réseau
+DisableNetBIOS            	    # EnableNetBIOS									# Protocole réseau désuet, ajoutes de la latence sur les call au kernel
+EnableLLMNR						# DisableLLMNR                  				# Utile à activer si vous avez besoin d'accéder à un autre PC en local
+# DisableLLDP                   # EnableLLDP									# Protocoles de découverte réseau
+# DisableLLTD                   # EnableLLTD 									# Protocoles de découverte réseau
+EnableMSNetClient				# DisableMSNetClient            				# Protocole « Client pour les réseaux Microsoft » 
+EnableQoS 						# DisableQoS     								# Active le QoS               
+EnableIPv4						# DisableIPv4                   				# Active l'IPv4
+DisableIPv6                  	# EnableIPv6									# Désactive l'IPv6
+DisableNCSIProbe                # EnableNCSIProbe								# Désactive le ping de Windows qui vérifie que vous êtes connecté au net. Réduis les spikes de latence
+DisableConnectionSharing        # EnableConnectionSharing						# Désactive le partage de connexion
+EnableRemoteAssistance          # DisableRemoteAssistance						# Rend l'assistance à distance possible
+EnableRemoteDesktop             # DisableRemoteDesktop							# Rend la connexion au Pc via sa session à distance possible
+
+### Service Tweaks ###
+DisableUpdateMSRT          		# EnableUpdateMSRT 								# Supprime l'outil de suppression de logiciels malveillants
+DisableUpdateDriver           	# EnableUpdateDriver							# Désactive la MAJ des pilotes automatique de Windows (manuel toujours possible)
+DisableUpdateMSProducts			# EnableUpdateMSProducts          				# Windows Update ne cherchera pas à mettre à jour ses autres produits comme Office, Skype, etc.. 
+DisableUpdateAutoDownload       # EnableUpdateAutoDownload						# Désactive la MAJ des applications Windows (Laisse la possibilité d'update Windows en lui même) 
+DisableUpdateRestart            # EnableUpdateRestart							# Désactive le redémarrage automatique après mises à jour critiques 
+DisableMaintenanceWakeUp        # EnableMaintenanceWakeUp						# Désactive le démarrage automatique pour mise à jour
+EnableAutoRestartSignOn			# DisableAutoRestartSignOn  					# Active le login automatique apres un restart de mise a jour    
+DisableSharedExperiences        # EnableSharedExperiences						# Désactive les infos partagées Pc/Mobiles 
+DisableClipboardHistory			# EnableClipboardHistory						# Désactive l'historique du presse papier        
+DisableAutoplay                 # EnableAutoplay								# Désactive le launch auto des clés USB
+DisableAutorun                  # EnableAutorun									# Désactive le launch auto des clés USB
+EnableRestorePoints 			# DisableRestorePoints    						# Active les points de restaurations Windows      
+EnableStorageSense              # DisableStorageSense							# Active le vidage auto des répertoires temporaires
+DisableDefragmentation      	# EnableDefragmentation							# Pas de défrag sur un SSD
+DisableSuperfetch               # EnableSuperfetch								# Superfetch inutile avec un SSD
+DisableIndexing   	            # EnableIndexing								# Désactive l'indexation auto des fichiers sur le disque dur
+# DisableRecycleBin             # EnableRecycleBin								# Désactive la corbeille
+EnableNTFSLongPaths             # DisableNTFSLongPaths							# Autorise les noms de fichiers longs
+DisableNTFSLastAccess           # EnableNTFSLastAccess 							# Empêche d'avoir la date/heure de la dernière ouverture d'un fichier
+# SetBIOSTimeUTC                # SetBIOSTimeLocal								# Mise a jour de l'heure selon bios 
+DisableHibernation				# EnableHibernation            					# Désactive totalement la veille prolongée
+DisableSleepButton              # EnableSleepButton 							# Supprime la possibilité de mettre le PC en veille depuis le menu démarrer
+DisableSleepTimeout             # EnableSleepTimeout							# Soit tu éteins ton PC toi même, soit il s'éteins pas !
+DisableFastStartup              # EnableFastStartup 							# Supprime le FastBoot de windows qui ralenti le PC
+DisableAutoRebootOnCrash        # EnableAutoRebootOnCrash						# Si le PC Crash, il laissera l'erreur affichée, pas de reboot automatique
+
+### UI Tweaks ###
+DisableActionCenter             # EnableActionCenter							# Retire les notifications Windows bien chiantes
+DisableLockScreen               # EnableLockScreen 								# Supprime l'affichage de type Smartphone du BackGround de démarrage
+# DisableLockScreenRS1          # EnableLockScreenRS1 							# Supprime l'affichage de type Smartphone du BackGround de démarrage (W10Anniv)
+ShowNetworkOnLockScreen			# HideNetworkFromLockScreen         			# Affiche l'icône de réseau sur l'écran de démarrage
+ShowShutdownOnLockScreen		# HideShutdownFromLockScreen    				# Active le button d'arrêt sur l'écran de démarrage
+DisableLockScreenBlur           # EnableLockScreenBlur							# Désactive le flou sur l'écran de démarrage
+DisableAeroShake             	# EnableAeroShake								# Supprime le fait de secouer une fenêtre avec la souris pour réduire les autres
+DisableAccessibilityKeys        # EnableAccessibilityKeys						# Désactive plusieurs fonctions d’accessibilité du clavier
+ShowTaskManagerDetails          # HideTaskManagerDetails						# Affiche le Gestionnaire de tâche complet de base
+ShowFileOperationsDetails       # HideFileOperationsDetails						# Affiche les infos sur les copies/déplacements de fichiers sur Windows
+EnableFileDeleteConfirm         # DisableFileDeleteConfirm						# Active la confirmation de suppression avant mise en corbeille
+ShowTaskbarSearchIcon			# HideTaskbarSearch | ShowTaskbarSearchBox      # Barre des taches : L’option avec Icon affichera la loupe, Box montrera le champs de recherche entier.
+HideTaskView                    # ShowTaskView									# Supprime le tick de Timeline Windows
+ShowLargeTaskbarIcons			# ShowSmallTaskbarIcons           				# Barre des taches : Petites ou grandes icones (de base W10 a des larges)
+SetTaskbarCombineAlways         # SetTaskbarCombineNever | SetTaskbarCombineWhenFull  # Si plusieurs dossiers ouverts, une seule icône combinera toutes vos fenêtres
+HideTaskbarPeopleIcon           # ShowTaskbarPeopleIcon							# Supprime l'affichage du logo People / Contact 
+ShowTrayIcons                   # HideTrayIcons									# Affiche toujours toutes les icones de la barre d’outils
+ShowSecondsInTaskbar         	# HideSecondsFromTaskbar						# Affiche les secondes dans l'heure
+EnableSearchAppInStore 			# DisableSearchAppInStore       				# Active l'ouverture de WStore quand une extension est inconnue
+DisableNewAppPrompt             # EnableNewAppPrompt							# Active l'ouverture de WStore quand une app est inconnue
+ShowRecentlyAddedApps			# HideRecentlyAddedApps         				# Affiche les applications récemment installées en haut du ménu démarrer
+HideMostUsedApps              	# ShowMostUsedApps								# N'affiche pas les applications les plus utilisées
+# SetWinXMenuPowerShell         # SetWinXMenuCmd
+SetControlPanelCategories		# SetControlPanelSmallIcons | SetControlPanelLargeIcons    # Choisit l'affichage par défaut du panneau de configuration
+EnableShortcutInName			# DisableShortcutInName           				# Active l'ajout de "Raccourci" dans le nom d'un nouveau raccourci
+ShowShortcutArrow				# HideShortcutArrow            					# Active la petite flèche au dessus d'un raccourci
+SetVisualFXPerformance          # SetVisualFXAppearance							# Gestions des effets visuels de base Windows
+DisableTitleBarColor           	# EnableTitleBarColor							# Désactive le changement de couleur de la barre de tâche selon son environnement
+SetAppsDarkMode            		# SetAppsLightMode								# Active par défaut le Darkmode sur les apps
+SetSystemDarkMode				# SetSystemLightMode            				# Active par défaut le Darkmode dans le système
+AddENKeyboard                	# RemoveENKeyboard								# Active le raccourci vers le clavier Qwerty
+EnableNumlock                	# DisableNumlock								# Active de base le pavé numérique
+DisableEnhPointerPrecision    	# EnableEnhPointerPrecision						# Désactive Accélération Souris 
+SetSoundSchemeNone            	# SetSoundSchemeDefault							# Supprime les sons de Windows
+DisableStartupSound           	# EnableStartupSound							# Supprime le son de démarrage de Windows
+EnableChangingSoundScheme		# DisableChangingSoundScheme  					# Active possibilité de changer le thème de sons Windows  
+EnableVerboseStatus           	# DisableVerboseStatus 							# Active les infos au démarrage/extinction.
+DisableF1HelpKey                # EnableF1HelpKey 								# Supprime l'aide Windows sur F1
+
+### Explorer UI Tweaks ###
+ShowExplorerTitleFullPath     	# HideExplorerTitleFullPath						# Affiche en entier l'URL du dossier dans lequel on se trouve
+ShowKnownExtensions             # HideKnownExtensions							# Affiche les extensions connues
+HideHiddenFiles 				# ShowHiddenFiles                 				# Cache les fichiers/dossiers cachés
+HideSuperHiddenFiles			# ShowSuperHiddenFiles          				# Cache les fichiers/dossiers vitaux à l'OS
+ShowEmptyDrives               	# HideEmptyDrives								# Affiche les lecteurs vides
+ShowFolderMergeConflicts      	# HideFolderMergeConflicts						# Affiche une notif en cas d'écrasement de fichiers existants
+DisableNavPaneExpand			# EnableNavPaneExpand             				# Désactive le suivi de l'arborescence dans la navigation sur Windows
+# ShowNavPaneAllFolders         # HideNavPaneAllFolders							# Option de l'arborescence dans la navigation sur Windows
+# ShowNavPaneLibraries          # HideNavPaneLibraries							# Option pour activer les bibliothèques
+EnableFldrSeparateProcess     	# DisableFldrSeparateProcess					# Active la séparation des processus Explorer.exe
+DisableRestoreFldrWindows		# EnableRestoreFldrWindows      				# Désactive le fait que le PC reboot en rouvrant la ou il s'est arrêté
+ShowEncCompFilesColor         	# HideEncCompFilesColor							# Ajoute un code couleur sur les fichiers. Bleu pour les fichiers compressés, vert cryptés etc
+EnableSharingWizard				# DisableSharingWizard          				# Active le SharingWizard 
+HideSelectCheckboxes          	# ShowSelectCheckboxes							# Désactive les case à cocher pour faire de la multiselection de fichiers pour les actions groupées
+HideSyncNotifications           # ShowSyncNotifications							# Désactive les pubs pour Onedrive ou Office Business.
+HideRecentShortcuts             # ShowRecentShortcuts 							# N'affiche pas les contenus accédés récemment
+SetExplorerThisPC               # SetExplorerQuickAccess						# Change le raccourci Exploreur vers le dossier "Ce PC" ou "Accès Rapide"
+ShowQuickAccess					# HideQuickAccess                 				# Active l'accès rapide dans l'arborescence dans la navigation
+ShowRecycleBinOnDesktop			# HideRecycleBinFromDesktop     				# Active la corbeille sur le bureau
+HideThisPCFromDesktop           # ShowThisPCOnDesktop							# Active "Ce PC" sur le bureau
+# ShowUserFolderOnDesktop       # HideUserFolderFromDesktop						# Active "Documents" sur le bureau
+# ShowControlPanelOnDesktop     # HideControlPanelFromDesktop					# Active "Panneau de Configuration" sur le bureau
+# ShowNetworkOnDesktop          # HideNetworkFromDesktop						# Active "Réseau" sur le bureau
+ShowDesktopIcons				# HideDesktopIcons              				# Active les icônes sur le bureau
+# ShowBuildNumberOnDesktop      # HideBuildNumberFromDesktop					# Affiche la version de windows sur le bureau
+ShowDesktopInThisPC				# HideDesktopFromThisPC           				# Active "Bureau" dans le dossier "Ce PC"
+ShowDesktopInExplorer			# HideDesktopFromExplorer  						# Active "Bureau" dans l'arborescence dans la navigation
+ShowDocumentsInThisPC  			# HideDocumentsFromThisPC          				# Active "Documents" dans le dossier "Ce PC"
+ShowDocumentsInExplorer 		# HideDocumentsFromExplorer         			# Active "Documents" dans l'arborescence dans la navigation
+ShowDownloadsInThisPC 			# HideDownloadsFromThisPC          				# Active "Téléchargements" dans le dossier "Ce PC"
+ShowDownloadsInExplorer			# HideDownloadsFromExplorer            			# Active "Téléchargements" dans l'arborescence dans la navigation
+HideMusicFromThisPC             # ShowMusicInThisPC           					# Active "Musique" dans le dossier "Ce PC"
+HideMusicFromExplorer       	# ShowMusicInExplorer           				# Active "Musique" dans l'arborescence dans la navigation
+ShowPicturesInThisPC			# HidePicturesFromThisPC          				# Active "Images" dans le dossier "Ce PC"
+ShowPicturesInExplorer 			# HidePicturesFromExplorer         				# Active "Images" dans l'arborescence dans la navigation
+ShowVideosInThisPC              # HideVideosFromThisPC         					# Active "Vidéos" dans le dossier "Ce PC"
+ShowVideosInExplorer 			# HideVideosFromExplorer          				# Active "Vidéos" dans l'arborescence dans la navigation
+Hide3DObjectsFromThisPC         # Show3DObjectsInThisPC           				# Active "3D Objects" dans le dossier "Ce PC"
+Hide3DObjectsFromExplorer     	# Show3DObjectsInExplorer           			# Active "3D Objects" dans l'arborescence dans la navigation
+ShowNetworkInExplorer 			# HideNetworkFromExplorer          				# Active "Réseaux" dans l'arborescence dans la navigation
+HideIncludeInLibraryMenu      	# ShowIncludeInLibraryMenu						# Cache les bibliothèques dans l'arborescence dans la navigation
+HideGiveAccessToMenu          	# ShowGiveAccessToMenu							# Désactive le menu contextuel qui permet de donner l'accès ç un dossier sur le réseau
+ShowShareMenu					# HideShareMenu                 				# Affiche le menu contextuel de partage
+EnableThumbnails	            # DisableThumbnails								# Active les miniatures les fichiers/photos
+EnableThumbnailCache			# DisableThumbnailCache           				# Active le cache sur les miniatures fichiers/photos
+DisableThumbsDBOnNetwork        # EnableThumbsDBOnNetwork						# Désactive le cache sur les miniatures fichiers/photos du réseau
+
+### Application Tweaks ###
+# EnableOneDrive				# DisableOneDrive   							# Désactive OneDrive
+# UninstallOneDrive             # InstallOneDrive								# Supprime OneDrive
+UninstallMsftBloat              # InstallMsftBloat								# Supprime les apps Microsoft préinstallées dans Windows
+UninstallThirdPartyBloat        # InstallThirdPartyBloat						# Désinstalle les applis préinstallées de Windows
+# UninstallWindowsStore         # InstallWindowsStore							# Supprime le WindowsStore.
+EnableXboxFeatures				# DisableXboxFeatures            				# Active les fonctionnalités Xbox et Gamepass
+# DisableFullscreenOptims       # EnableFullscreenOptims						# Désactive les optimisations de plein écran
+DisableAdobeFlash               # EnableAdobeFlash								# Désactive Adbode Flash Player automatiquement
+DisableEdgePreload              # EnableEdgePreload								# Désactive le préchargement de Edge au démarrage vu qu'on l'utilise pas 
+DisableEdgeShortcutCreation     # EnableEdgeShortcutCreation					# Supprime le raccourci de Edge
+DisableIEFirstRun               # EnableIEFirstRun								# Empêche le questionnaire au premier lancement de Edge
+DisableFirstLogonAnimation      # EnableFirstLogonAnimation						# Désactive l'animation du premier démarrage ou après mise à jour	
+DisableMediaSharing             # EnableMediaSharing							# Désactive le partage de média
+DisableMediaOnlineAccess      	# EnableMediaOnlineAccess						# Media Player ne pourra plus se connecter sur Internet pour récupérer des infos sur les vidéos lues
+EnableDeveloperMode           	# DisableDeveloperMode							# Active le Developer Mode
+UninstallMediaPlayer          	# InstallMediaPlayer							# Désinstalle Media Player de ses morts
+UninstallInternetExplorer     	# InstallInternetExplorer						# Désinstalle IE
+UninstallWorkFolders          	# InstallWorkFolders							# Désinstalle les dossiers de travail
+# UninstallHelloFace            # InstallHelloFace								# Prise en chage de Hello 
+UninstallMathRecognizer      	# InstallMathRecognizer							# Prise en charge de la reconnaissance manuscrite algébrique 
+UninstallPowerShellV2       	# InstallPowerShellV2							# Déinstalle la version 2.0 (ancienne) de PowerShell
+# UninstallPowerShellISE        # InstallPowerShellISE							# Installe une version ISE de PowerShell
+# InstallLinuxSubsystem         # UninstallLinuxSubsystem						# Installe le sub system Linux
+InstallHyperV                 	# UninstallHyperV								# Installe Hyper V
+InstallSSHClient				# UninstallSSHClient            				# Installe le client SSH
+# InstallSSHServer              # UninstallSSHServer           					# Installe le server SSH
+# InstallTelnetClient           # UninstallTelnetClient           				# Installe le client Telnet
+# InstallNET23                  # UninstallNET23								# Supprime lesversions 2, 3 et 3.5 de Microsoft.NET.
+# SetPhotoViewerAssociation     # UnsetPhotoViewerAssociation					# Remet l'ancien visionneur de photo de Windows 10
+# AddPhotoViewerOpenWith        # RemovePhotoViewerOpenWith						# Rajoute au menu contextuel d’une image un menu pour ouvrir avec l’ancienne visionneure de photo
+InstallPDFPrinter				# UninstallPDFPrinter          					# Installe le PDF Printer
+UninstallXPSPrinter             # InstallXPSPrinter								# Désinstalle le XPS Printer
+RemoveFaxPrinter				# AddFaxPrinter					                # Supprime la prise en charge des Fax
+# InstallFaxAndScan				# UninstallFaxAndScan            				# Active la prise en charge native du logiciel "Fax et et scan"
+
+### Server Specific Tweaks ###
+# HideServerManagerOnLogin      # ShowServerManagerOnLogin
+# DisableShutdownTracker        # EnableShutdownTracker
+# DisablePasswordPolicy         # EnablePasswordPolicy
+# DisableCtrlAltDelLogin        # EnableCtrlAltDelLogin
+# DisableIEEnhancedSecurity     # EnableIEEnhancedSecurity
+# EnableAudio                   # DisableAudio
+
+### Unpinning ###
+# UnpinStartMenuTiles															# Supprime les tuiles épinglées du menu démarrer ( Pas de retour arrière )
+# UnpinTaskbarIcons																# Supprime les icônes ancrées dans la barre de tâche
+
+### Auxiliary Functions ###
+WaitForKey
+Restart
